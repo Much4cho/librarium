@@ -1,0 +1,3 @@
+<p>library-overview works!</p>
+<button (click)="clicked()">click me</button>
+<p *ngFor="let book of (books$ | async)?.docs">{{book.title}}</p>

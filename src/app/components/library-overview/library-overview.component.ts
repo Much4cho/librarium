@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-library-overview',
-  template: `
-    <p>
-      library-overview works!
-    </p>
-  `,
-  styles: [
-  ]
+  templateUrl: './library-overview.component.html',
+  styleUrls: ['./library-overview.component.scss']
 })
 export class LibraryOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private searchService: SearchService
+  ) { }
+
+  books$: Observable<BookResponse>;
 
   ngOnInit(): void {
+  }
+
+  clicked(): void {
+    this.books$ = this.searchService.searchBooks()
   }
 
 }
